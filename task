@@ -30,7 +30,7 @@ release-cljs () {
     cp {www-dev,resources/www/$APP_NS}/cljs/$app/main.js
   done
 }
-:
+
 deploy () {
   scp config.edn biff@$HOST:biff/template/
   # ...
