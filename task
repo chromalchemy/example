@@ -3,7 +3,7 @@ set -e
 
 APP_NS="hello"
 CLJS_APPS="app"
-HOST="example.com"
+HOST="tmem.xyz"
 
 setup () {
   which clj npm overmind > /dev/null # Assert dependencies
@@ -30,7 +30,7 @@ release-cljs () {
     cp {www-dev,resources/www/$APP_NS}/cljs/$app/main.js
   done
 }
-
+:
 deploy () {
   scp config.edn biff@$HOST:biff/template/
   # ...
