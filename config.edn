@@ -1,10 +1,13 @@
-{:prod {:biff.crux.jdbc/user "..."
+{:prod {; If you set jdbc credentials, remove this file from source control!
+        :biff.crux.jdbc/dbname "..."
+        :biff.crux.jdbc/user "..."
         :biff.crux.jdbc/password "..."
         :biff.crux.jdbc/host "..."
         :biff.crux.jdbc/port ...
-        :hello.biff/host "tmem.xyz"
-        :hello.biff.crux.jdbc/dbname "hello"
-        :hello.mailgun/api-key "..."}
+        ; Uncomment to use filesystem storage in production instead of jdbc:
+        ; :biff.crux/topology :standalone
+        :example.biff/host "tmem.xyz"
+        :example.mailgun/api-key "..."}
  :dev {:inherit [:prod]
        :biff/dev true
-       :hello.biff/host "localhost"}}
+       :example.biff/host "localhost"}}

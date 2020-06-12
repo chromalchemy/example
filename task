@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-APP_NS="hello"
+APP_NS="example"
 CLJS_APPS="app"
 HOST="tmem.xyz"
 
@@ -9,10 +9,11 @@ setup () {
   which clj npm overmind > /dev/null # Assert dependencies
   npm install # Or `npm init; npm install --save-dev shadow-cljs; npm install --save react react-dom`
   clj -Sresolve-tags
+  clj -Stree > /dev/null # Download project dependencies
 }
 
 repl () {
-  BIFF_ENV=dev clj -m biff.core
+  BIFF_ENV=dev clj "$@" -m biff.core
 }
 
 cljs () {
@@ -23,7 +24,7 @@ dev () {
   overmind start
 }
 
-release-cljs () {
+compile-cljs () {
   npx shadow-cljs release $CLJS_APPS
   for app in $CLJS_APPS; do
     mkdir -p resources/www/$APP_NS/cljs/$app
@@ -31,9 +32,8 @@ release-cljs () {
   done
 }
 
-deploy () {
-  scp config.edn biff@$HOST:biff/template/
-  # ...
+push-config () {
+  scp config.edn biff@$HOST:prod/
 }
 
 "$@"
