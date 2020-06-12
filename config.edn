@@ -5,7 +5,7 @@
         :biff.crux.jdbc/host "..."
         :biff.crux.jdbc/port ...
         ; Uncomment to use filesystem storage in production instead of jdbc:
-        ; :biff.crux/topology :standalone
+        :biff.crux/topology :standalone
         :example.biff/host "tmem.xyz"
         :example.mailgun/api-key "..."}
  :dev {:inherit [:prod]
