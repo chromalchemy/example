@@ -9,13 +9,15 @@
      [:input {:name "email" :type "email" :placeholder "Email"}]
      [:button {:type "submit"} "Sign up/Sign in"]]))
 
+(def ensure-signed-out [:script {:src "/js/ensure-signed-out.js"}])
+
 (def home
   [:html
    [:head
-    [:meta {:charset "utf-8"}]
-    [:script {:src "/js/ensure-signed-out.js"}]]
+    [:meta {:charset "utf-8"}]]
    [:body
-    signin-form]])
+    [:#app "Loading..."]
+    [:script {:src "/cljs/app/main.js"}]]])
 
 (def signin-sent
   [:html [:head [:meta {:charset "utf-8"}]]

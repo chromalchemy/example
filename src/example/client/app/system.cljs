@@ -1,3 +1,5 @@
-(ns example.client.app.system)
+(ns example.client.app.system
+  (:require
+    [javelin.core :as j]))
 
-(defonce system (atom {}))
+(defonce system (j/cell {}))
